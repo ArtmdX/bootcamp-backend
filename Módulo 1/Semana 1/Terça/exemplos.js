@@ -1,36 +1,36 @@
-const produtos = [
-  { nome: 'Mouse', preco: 50 },
-  { nome: 'Teclado', preco: 150 },
-  { nome: 'Monitor', preco: 800 },
-  { nome: 'Webcam', preco: 200 }
-];
+const numeros = [250144, 1, 2, 3, 4, 5];
+// const frutas = ['Banana', 'maça', 'pera', 'melancia'];
 
-// 1. Criar função que retorna produtos abaixo de um preço
-const abaixoDe = (produtos, precoMax) => {
-  // implementar usando .filter
-};
+// const numerosDobro = numeros.map(num => {
+//   return num * 2;
+// });
+// console.log(numerosDobro);
 
-console.log(abaixoDe(produtos, 200));
+// const frutasCortadas = frutas.map(fruta => {
+//   return `${fruta} cortada`;
+// });
+// console.log(frutasCortadas);
 
-// 2. Criar função que aplica desconto em todos os produtos
-const aplicarDesconto = (produtos, percentual) => {
-  // implementar usando .map
-  // retornar novo array com precos atualizados
-};
+// const numerosPares = numeros.filter(num => {
+//   return num % 2 === 0;
+// });
 
-console.log(aplicarDesconto(produtos, 10));
+// console.log(numerosPares);
 
-// 3. Criar função que calcula o preço total
-const calcularTotal = produtos => {
-  // implementar usando .reduce
-};
+// const frutasComM = frutas.filter(fruta => {
+//   return fruta.includes('m');
+// });
 
-console.log(calcularTotal(produtos)); // 1200
+// console.log(frutasComM);
 
-// 4. DESAFIO: Produtos abaixo de 500 com 15% de desconto
-const produtosComDesconto = produtos => {
-  // usar .filter + .map + .reduce
-  // filtrar abaixo de 500
-  // aplicar 15% desconto
-  // calcular total
-};
+// const somaDosNumeros = numeros.reduce((acumulador, num) => {
+//   return acumulador + num;
+// });
+
+// console.log(somaDosNumeros);
+
+// const maiorNumero = Math.max(...numeros);
+
+// const menorNumero = Math.min(...numeros);
+
+// console.log(maiorNumero, menorNumero);
