@@ -39,9 +39,9 @@ Do zero ao primeiro servidor Express rodando com TypeScript
 ### **Temas da Semana:**
 
 - **Terça:** Funções, arrow functions, métodos de array (.map, .filter, .find)
-- **Quarta:** Objetos, destructuring, introdução ao TypeScript
-- **Quinta:** Interfaces, tipagem de funções princípios da orientação a objeto
-- **Sexta:** mini-projeto
+- **Quarta:** Revisão de funções
+- **Quinta:** Objetos, destructuring, introdução ao TypeScript, Interfaces, tipagem de funções
+- **Sexta:** princípios da orientação a objeto, mini-projetoP
 
 ### **Entregável:**
 

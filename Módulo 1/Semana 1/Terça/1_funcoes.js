@@ -29,5 +29,6 @@ const saudar = (nome, saudacao = 'Olá') => {
   return `${saudacao}, ${nome}!`;
 };
 
+saudar();
 console.log(saudar('Samuel')); // Olá, Samuel!
 console.log(saudar('Samuel', 'Bem-vindo')); // Bem-vindo, Samuel!
