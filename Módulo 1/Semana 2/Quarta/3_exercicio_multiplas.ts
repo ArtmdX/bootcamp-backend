@@ -1,3 +1,4 @@
+export {};
 /**
  * ============================================
  * QUARTA-FEIRA - EXERCÍCIO
@@ -9,7 +10,7 @@
 // EXERCÍCIO 1: Sistema de Notificações
 // ============================================
 
-console.log("\n=== EXERCÍCIO 1: Sistema de Notificações ===\n");
+console.log('\n=== EXERCÍCIO 1: Sistema de Notificações ===\n');
 
 /**
  * CENÁRIO:
@@ -37,7 +38,7 @@ function enviarEmail(destinatario: string, mensagem: string): Promise<string> {
       if (Math.random() > 0.2) {
         resolve(`✅ Email enviado para ${destinatario}`);
       } else {
-        reject(new Error("❌ Falha ao enviar email"));
+        reject(new Error('❌ Falha ao enviar email'));
       }
     }, 800);
   });
@@ -50,7 +51,7 @@ function enviarSMS(telefone: string, mensagem: string): Promise<string> {
       if (Math.random() > 0.1) {
         resolve(`✅ SMS enviado para ${telefone}`);
       } else {
-        reject(new Error("❌ Falha ao enviar SMS"));
+        reject(new Error('❌ Falha ao enviar SMS'));
       }
     }, 600);
   });
@@ -63,38 +64,33 @@ function enviarPush(userId: string, mensagem: string): Promise<string> {
       if (Math.random() > 0.3) {
         resolve(`✅ Push enviado para usuário ${userId}`);
       } else {
-        reject(new Error("❌ Falha ao enviar push"));
+        reject(new Error('❌ Falha ao enviar push'));
       }
     }, 500);
   });
 }
 
 // TODO: Complete esta função usando Promise.allSettled
-async function enviarNotificacoes(
-  email: string,
-  telefone: string,
-  userId: string,
-  mensagem: string
-): Promise<void> {
-  console.log("🔔 Enviando notificações...\n");
+async function enviarNotificacoes(email: string, telefone: string, userId: string, mensagem: string): Promise<void> {
+  console.log('🔔 Enviando notificações...\n');
 
   // DICA: Use Promise.allSettled para executar todas
   const resultados = await Promise.allSettled([
     enviarEmail(email, mensagem),
     enviarSMS(telefone, mensagem),
-    enviarPush(userId, mensagem),
+    enviarPush(userId, mensagem)
   ]);
 
   // TODO: Processar os resultados e mostrar relatório
-  console.log("📊 RELATÓRIO DE ENVIO:\n");
+  console.log('📊 RELATÓRIO DE ENVIO:\n');
 
   let sucessos = 0;
   let falhas = 0;
 
   resultados.forEach((resultado, index) => {
-    const servicos = ["Email", "SMS", "Push"];
+    const servicos = ['Email', 'SMS', 'Push'];
 
-    if (resultado.status === "fulfilled") {
+    if (resultado.status === 'fulfilled') {
       console.log(`${servicos[index]}: ${resultado.value}`);
       sucessos++;
     } else {
@@ -108,13 +104,13 @@ async function enviarNotificacoes(
 }
 
 // Teste
-enviarNotificacoes("samuel@email.com", "+5561999999999", "user123", "Bem-vindo!");
+enviarNotificacoes('samuel@email.com', '+5561999999999', 'user123', 'Bem-vindo!');
 
 // ============================================
 // EXERCÍCIO 2: Busca em Múltiplas APIs
 // ============================================
 
-console.log("\n\n=== EXERCÍCIO 2: Busca em Múltiplas APIs ===\n");
+console.log('\n\n=== EXERCÍCIO 2: Busca em Múltiplas APIs ===\n');
 
 /**
  * CENÁRIO:
@@ -132,36 +128,36 @@ interface Preco {
 }
 
 function buscarPrecoAPI1(produto: string): Promise<Preco> {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve({
-        api: "API 1 (Loja A)",
+        api: 'API 1 (Loja A)',
         valor: 299.99,
-        moeda: "BRL",
+        moeda: 'BRL'
       });
     }, Math.random() * 2000 + 500); // 500ms a 2500ms
   });
 }
 
 function buscarPrecoAPI2(produto: string): Promise<Preco> {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve({
-        api: "API 2 (Loja B)",
+        api: 'API 2 (Loja B)',
         valor: 289.99,
-        moeda: "BRL",
+        moeda: 'BRL'
       });
     }, Math.random() * 2000 + 500);
   });
 }
 
 function buscarPrecoAPI3(produto: string): Promise<Preco> {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve({
-        api: "API 3 (Loja C)",
+        api: 'API 3 (Loja C)',
         valor: 309.99,
-        moeda: "BRL",
+        moeda: 'BRL'
       });
     }, Math.random() * 2000 + 500);
   });
@@ -176,25 +172,25 @@ async function buscarMelhorPreco(produto: string): Promise<void> {
   const primeiraResposta = await Promise.race([
     buscarPrecoAPI1(produto),
     buscarPrecoAPI2(produto),
-    buscarPrecoAPI3(produto),
+    buscarPrecoAPI3(produto)
   ]);
 
   const fim = Date.now();
 
-  console.log("🏆 Primeira resposta recebida:");
+  console.log('🏆 Primeira resposta recebida:');
   console.log(`API: ${primeiraResposta.api}`);
   console.log(`Preço: ${primeiraResposta.moeda} ${primeiraResposta.valor}`);
   console.log(`⏱️ Tempo: ${(fim - inicio) / 1000}s`);
 }
 
 // Teste
-setTimeout(() => buscarMelhorPreco("Notebook"), 2000);
+setTimeout(() => buscarMelhorPreco('Notebook'), 2000);
 
 // ============================================
 // EXERCÍCIO 3: Backup de Servidores
 // ============================================
 
-console.log("\n\n=== EXERCÍCIO 3: Backup de Servidores ===\n");
+console.log('\n\n=== EXERCÍCIO 3: Backup de Servidores ===\n');
 
 /**
  * CENÁRIO:
@@ -210,9 +206,9 @@ function conectarServidorPrincipal(): Promise<string> {
     setTimeout(() => {
       // 30% de chance de estar online
       if (Math.random() > 0.7) {
-        resolve("🟢 Servidor Principal (US-EAST)");
+        resolve('🟢 Servidor Principal (US-EAST)');
       } else {
-        reject(new Error("🔴 Servidor Principal offline"));
+        reject(new Error('🔴 Servidor Principal offline'));
       }
     }, 300);
   });
@@ -223,9 +219,9 @@ function conectarServidorBackup1(): Promise<string> {
     setTimeout(() => {
       // 60% de chance de estar online
       if (Math.random() > 0.4) {
-        resolve("🟡 Servidor Backup 1 (EU-WEST)");
+        resolve('🟡 Servidor Backup 1 (EU-WEST)');
       } else {
-        reject(new Error("🔴 Servidor Backup 1 offline"));
+        reject(new Error('🔴 Servidor Backup 1 offline'));
       }
     }, 600);
   });
@@ -236,9 +232,9 @@ function conectarServidorBackup2(): Promise<string> {
     setTimeout(() => {
       // 90% de chance de estar online
       if (Math.random() > 0.1) {
-        resolve("🟢 Servidor Backup 2 (ASIA)");
+        resolve('🟢 Servidor Backup 2 (ASIA)');
       } else {
-        reject(new Error("🔴 Servidor Backup 2 offline"));
+        reject(new Error('🔴 Servidor Backup 2 offline'));
       }
     }, 900);
   });
@@ -246,19 +242,19 @@ function conectarServidorBackup2(): Promise<string> {
 
 // TODO: Use Promise.any para conectar no primeiro disponível
 async function conectarEmServidorDisponivel(): Promise<void> {
-  console.log("🔄 Tentando conectar em servidores disponíveis...\n");
+  console.log('🔄 Tentando conectar em servidores disponíveis...\n');
 
   try {
     // DICA: Use Promise.any
     const servidorConectado = await Promise.any([
       conectarServidorPrincipal(),
       conectarServidorBackup1(),
-      conectarServidorBackup2(),
+      conectarServidorBackup2()
     ]);
 
-    console.log("✅ Conectado em:", servidorConectado);
+    console.log('✅ Conectado em:', servidorConectado);
   } catch (erro) {
-    console.log("❌ Nenhum servidor disponível!");
+    console.log('❌ Nenhum servidor disponível!');
   }
 }
 
@@ -269,7 +265,7 @@ setTimeout(() => conectarEmServidorDisponivel(), 4000);
 // EXERCÍCIO 4: Dashboard de Analytics
 // ============================================
 
-console.log("\n\n=== EXERCÍCIO 4: Dashboard de Analytics ===\n");
+console.log('\n\n=== EXERCÍCIO 4: Dashboard de Analytics ===\n');
 
 /**
  * CENÁRIO:
@@ -302,10 +298,10 @@ function buscarVendas(): Promise<Vendas> {
       if (Math.random() > 0.05) {
         resolve({
           total: 150000,
-          mes: "Janeiro",
+          mes: 'Janeiro'
         });
       } else {
-        reject(new Error("Falha ao buscar vendas"));
+        reject(new Error('Falha ao buscar vendas'));
       }
     }, 800);
   });
@@ -318,10 +314,10 @@ function buscarUsuarios(): Promise<Usuarios> {
       if (Math.random() > 0.05) {
         resolve({
           ativos: 1250,
-          novos: 80,
+          novos: 80
         });
       } else {
-        reject(new Error("Falha ao buscar usuários"));
+        reject(new Error('Falha ao buscar usuários'));
       }
     }, 600);
   });
@@ -334,10 +330,10 @@ function buscarTrafego(): Promise<Trafego> {
       if (Math.random() > 0.05) {
         resolve({
           pageviews: 50000,
-          sessoes: 12000,
+          sessoes: 12000
         });
       } else {
-        reject(new Error("Falha ao buscar tráfego"));
+        reject(new Error('Falha ao buscar tráfego'));
       }
     }, 700);
   });
@@ -345,36 +341,32 @@ function buscarTrafego(): Promise<Trafego> {
 
 // TODO: Use Promise.all para carregar todos os dados
 async function carregarDashboard(): Promise<void> {
-  console.log("📊 Carregando dashboard de analytics...\n");
+  console.log('📊 Carregando dashboard de analytics...\n');
   const inicio = Date.now();
 
   try {
     // DICA: Use Promise.all
-    const [vendas, usuarios, trafego] = await Promise.all([
-      buscarVendas(),
-      buscarUsuarios(),
-      buscarTrafego(),
-    ]);
+    const [vendas, usuarios, trafego] = await Promise.all([buscarVendas(), buscarUsuarios(), buscarTrafego()]);
 
     const fim = Date.now();
 
-    console.log("✅ Dashboard carregado com sucesso!\n");
-    console.log("💰 VENDAS:");
+    console.log('✅ Dashboard carregado com sucesso!\n');
+    console.log('💰 VENDAS:');
     console.log(`   Total: R$ ${vendas.total.toLocaleString()}`);
     console.log(`   Mês: ${vendas.mes}\n`);
 
-    console.log("👥 USUÁRIOS:");
+    console.log('👥 USUÁRIOS:');
     console.log(`   Ativos: ${usuarios.ativos}`);
     console.log(`   Novos: ${usuarios.novos}\n`);
 
-    console.log("🌐 TRÁFEGO:");
+    console.log('🌐 TRÁFEGO:');
     console.log(`   Pageviews: ${trafego.pageviews.toLocaleString()}`);
     console.log(`   Sessões: ${trafego.sessoes.toLocaleString()}\n`);
 
     console.log(`⏱️ Tempo de carregamento: ${(fim - inicio) / 1000}s`);
   } catch (erro) {
-    console.log("❌ Erro ao carregar dashboard:", (erro as Error).message);
-    console.log("⚠️ Dashboard não pode ser exibido sem todos os dados");
+    console.log('❌ Erro ao carregar dashboard:', (erro as Error).message);
+    console.log('⚠️ Dashboard não pode ser exibido sem todos os dados');
   }
 }
 
@@ -385,7 +377,7 @@ setTimeout(() => carregarDashboard(), 6000);
 // EXERCÍCIO 5: DESAFIO - Sistema de Backup
 // ============================================
 
-console.log("\n\n=== EXERCÍCIO 5: DESAFIO ===\n");
+console.log('\n\n=== EXERCÍCIO 5: DESAFIO ===\n');
 
 /**
  * CENÁRIO COMPLEXO:
@@ -412,17 +404,17 @@ function backupLocal(dados: string): Promise<BackupResultado> {
     setTimeout(() => {
       if (Math.random() > 0.3) {
         resolve({
-          local: "Local (HD Externo)",
+          local: 'Local (HD Externo)',
           sucesso: true,
           tempo,
-          tamanho: "2.5 GB",
+          tamanho: '2.5 GB'
         });
       } else {
         reject({
-          local: "Local (HD Externo)",
+          local: 'Local (HD Externo)',
           sucesso: false,
           tempo,
-          erro: "Disco cheio",
+          erro: 'Disco cheio'
         });
       }
     }, tempo);
@@ -435,17 +427,17 @@ function backupCloud(dados: string): Promise<BackupResultado> {
     setTimeout(() => {
       if (Math.random() > 0.2) {
         resolve({
-          local: "Cloud (AWS S3)",
+          local: 'Cloud (AWS S3)',
           sucesso: true,
           tempo,
-          tamanho: "2.5 GB",
+          tamanho: '2.5 GB'
         });
       } else {
         reject({
-          local: "Cloud (AWS S3)",
+          local: 'Cloud (AWS S3)',
           sucesso: false,
           tempo,
-          erro: "Timeout na conexão",
+          erro: 'Timeout na conexão'
         });
       }
     }, tempo);
@@ -458,17 +450,17 @@ function backupExternal(dados: string): Promise<BackupResultado> {
     setTimeout(() => {
       if (Math.random() > 0.4) {
         resolve({
-          local: "External (Dropbox)",
+          local: 'External (Dropbox)',
           sucesso: true,
           tempo,
-          tamanho: "2.5 GB",
+          tamanho: '2.5 GB'
         });
       } else {
         reject({
-          local: "External (Dropbox)",
+          local: 'External (Dropbox)',
           sucesso: false,
           tempo,
-          erro: "Cota excedida",
+          erro: 'Cota excedida'
         });
       }
     }, tempo);
@@ -477,26 +469,22 @@ function backupExternal(dados: string): Promise<BackupResultado> {
 
 // TODO: Implemente o sistema completo de backup
 async function realizarBackupCompleto(dados: string): Promise<void> {
-  console.log("💾 Iniciando backup em múltiplos locais...\n");
+  console.log('💾 Iniciando backup em múltiplos locais...\n');
   const inicio = Date.now();
 
   // DICA: Use Promise.allSettled
-  const resultados = await Promise.allSettled([
-    backupLocal(dados),
-    backupCloud(dados),
-    backupExternal(dados),
-  ]);
+  const resultados = await Promise.allSettled([backupLocal(dados), backupCloud(dados), backupExternal(dados)]);
 
   const fim = Date.now();
 
   // TODO: Processar resultados
-  console.log("📊 RELATÓRIO DE BACKUP:\n");
+  console.log('📊 RELATÓRIO DE BACKUP:\n');
 
   let sucessos = 0;
   let falhas = 0;
 
-  resultados.forEach((resultado) => {
-    if (resultado.status === "fulfilled") {
+  resultados.forEach(resultado => {
+    if (resultado.status === 'fulfilled') {
       const r = resultado.value;
       console.log(`✅ ${r.local}`);
       console.log(`   Tamanho: ${r.tamanho}`);
@@ -511,20 +499,20 @@ async function realizarBackupCompleto(dados: string): Promise<void> {
     }
   });
 
-  console.log("=" .repeat(40));
+  console.log('='.repeat(40));
   console.log(`✅ Backups bem-sucedidos: ${sucessos}`);
   console.log(`❌ Backups com falha: ${falhas}`);
   console.log(`⏱️ Tempo total: ${(fim - inicio) / 1000}s`);
 
   if (sucessos > 0) {
-    console.log("\n🎉 Backup concluído! Dados protegidos.");
+    console.log('\n🎉 Backup concluído! Dados protegidos.');
   } else {
-    console.log("\n⚠️ ATENÇÃO: Todos os backups falharam!");
+    console.log('\n⚠️ ATENÇÃO: Todos os backups falharam!');
   }
 }
 
 // Teste
-setTimeout(() => realizarBackupCompleto("dados-importantes.zip"), 8000);
+setTimeout(() => realizarBackupCompleto('dados-importantes.zip'), 8000);
 
 // ============================================
 // RESUMO DOS EXERCÍCIOS
