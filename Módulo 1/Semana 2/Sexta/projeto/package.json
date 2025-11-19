@@ -1,0 +1,27 @@
+{
+  "name": "agregador-jsonplaceholder-ts",
+  "version": "1.0.0",
+  "description": "Projeto Final - Semana 2: Agregador de Dados JSONPlaceholder em TypeScript",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "dev": "ts-node index.ts",
+    "build": "tsc",
+    "run:build": "node dist/index.js"
+  },
+  "keywords": [
+    "api",
+    "jsonplaceholder",
+    "fetch",
+    "async",
+    "promises",
+    "typescript"
+  ],
+  "author": "Samuel (Bootcamp Backend)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}

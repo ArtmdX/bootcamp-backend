@@ -1,0 +1,14 @@
+{
+  "name": "semana-2-typescript",
+  "version": "1.0.0",
+  "description": "Semana 2 - Assincronismo e APIs com TypeScript",
+  "scripts": {
+    "dev": "ts-node",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -41,7 +41,7 @@ Do zero ao primeiro servidor Express rodando com TypeScript
 - **Terça:** Funções, arrow functions, métodos de array (.map, .filter, .find)
 - **Quarta:** Revisão de funções
 - **Quinta:** Objetos, destructuring, introdução ao TypeScript, Interfaces, tipagem de funções
-- **Sexta:** princípios da orientação a objeto, mini-projetoP
+- **Sexta:** princípios da orientação a objeto, mini-projeto
 
 ### **Entregável:**
 
@@ -79,7 +79,7 @@ Se não conseguir manipular arrays básicos, precisa revisar antes de seguir
 
 ### **Entregável:**
 
-Script que consome API pública (JSONPlaceholder) e gera arquivo JSON
+Fazer uma API que consome API pública (JSONPlaceholder) e formata resposta JSON e salva em memória
 
 ### **✅ Checklist de Conceitos:**
 
